@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Hello Python
+GenericName=Tkinter demo packaged as AppImage
+Comment=Demo of bundling CPython + a GUI into an AppImage
+Exec=hello-python
+Icon=hello-python
+Categories=Utility;Development;
+Terminal=false

@@ -1,0 +1,3 @@
+# Intentionally empty: this demo uses only the Python stdlib (tkinter, ttk).
+# Add any third-party packages here and they'll be bundled into the AppImage
+# by linuxdeploy-plugin-python via pip install -r requirements.txt.

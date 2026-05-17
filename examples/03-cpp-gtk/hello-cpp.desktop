@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Hello C++
+GenericName=GTK3 demo packaged as AppImage
+Comment=Native GTK3 GUI bundled with linuxdeploy-plugin-gtk
+Exec=hello-cpp
+Icon=hello-cpp
+Categories=Utility;Development;
+Terminal=false

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Hello Go
+GenericName=Hello (Go CLI demo)
+Comment=Minimal Go CLI packaged as AppImage
+Exec=hello-go
+Icon=hello-go
+Categories=Utility;
+Terminal=true

@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+jobs:
+  go:
+    uses: ./.github/workflows/build-go.yml
+  python:
+    uses: ./.github/workflows/build-python.yml
+  cpp:
+    uses: ./.github/workflows/build-cpp.yml
+
+  release:
+    needs: [go, python, cpp]
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download all AppImage artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Layout artifacts
+        run: |
+          mkdir -p release
+          find artifacts -name '*.AppImage' -exec cp -v {} release/ \;
+          ls -la release/
+
+      - name: Publish GitHub Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: release/*.AppImage
+          generate_release_notes: true
