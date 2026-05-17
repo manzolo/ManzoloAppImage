@@ -26,8 +26,12 @@ rm -rf "$APPDIR" "${SCRIPT_DIR}/${APP_NAME}-x86_64.AppImage"
 
 log_info "Compiling Go binary (static)"
 mkdir -p "${APPDIR}/usr/bin"
-( cd "$SCRIPT_DIR" && CGO_ENABLED=0 go build -trimpath -ldflags="-s -w" \
-    -o "${APPDIR}/usr/bin/${BIN_NAME}" . )
+# -buildvcs=false: Go 1.18+ tries to stamp VCS metadata into the binary,
+# which fails when the repo is bind-mounted into a container with a
+# different uid (git rejects with "dubious ownership"). The stamp is
+# cosmetic, so we just disable it.
+( cd "$SCRIPT_DIR" && CGO_ENABLED=0 go build -trimpath -buildvcs=false \
+    -ldflags="-s -w" -o "${APPDIR}/usr/bin/${BIN_NAME}" . )
 
 log_info "Generating placeholder icon (256x256)"
 ensure_icon "${SCRIPT_DIR}/${BIN_NAME}.png" "G" "#00ADD8" "#ffffff"
