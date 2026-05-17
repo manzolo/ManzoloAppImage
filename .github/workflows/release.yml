@@ -26,6 +26,11 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           path: artifacts
+          # Without a pattern, download-artifact pulls *every* artifact,
+          # including the .dockerbuild build-summary blobs that
+          # docker/build-push-action@v6 attaches automatically. Restrict
+          # to our AppImages.
+          pattern: 'Hello*-x86_64.AppImage'
 
       - name: Layout artifacts
         run: |
