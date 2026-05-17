@@ -1,5 +1,9 @@
 # ManzoloAppImage — From Idea to AppImage, A to Z
 
+<a href="https://www.buymeacoffee.com/manzolo">
+  <img src=".github/blue-button.png" alt="Buy Me A Coffee" width="200">
+</a>
+
 A complete, hands-on walkthrough of packaging Linux desktop applications as **AppImages**. Three runnable examples in three different languages (Go, Python, C++), a reproducible Docker build environment, an interactive `make wizard`, and GitHub Actions that build & smoke-test everything on every push.
 
 > **Audience:** developers on Ubuntu (or any Linux) who have an idea — a CLI tool, a GUI app, a service — and want to ship it as a single self-contained file that runs on essentially any modern Linux distro.
